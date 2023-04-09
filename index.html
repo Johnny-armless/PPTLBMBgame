@@ -1,48 +1,95 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8"name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>PTPLBMX</title>
+    <style>
+      h1 {
+        text-align: center;
+        font-size: medium;
+      }
+      h5 {
+        text-align: center;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        text-align: center;
+      }
+      
+      #game {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flexbox;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      
+      button {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      
+      button:hover {
+        background-color: #3e8e41;
+      }
+      
+      button:active {
+        background-color: #1f4423;
+      }
+    </style>
   </head>
   <body>
+    <h1>Jogo de Pedra, Papel, Tesoura Brasileiro</h1>
+    <h5>Escolha sua arma de preferencia</h5>
 
     <div id="game"></div>
 
     <script>
       const userChoiceDisplay = document.createElement('h1')
-const computerChoiceDisplay = document.createElement('h1')
-const resultDisplay = document.createElement('h1')
-const gameGrid = document.getElementById('game')
-gameGrid.append(userChoiceDisplay, computerChoiceDisplay, resultDisplay)
+      const computerChoiceDisplay = document.createElement('h1')
+      const resultDisplay = document.createElement('h1')
+      const gameGrid = document.getElementById('game')
+      gameGrid.append(userChoiceDisplay, computerChoiceDisplay, resultDisplay)
 
-const choices = ['Pedra', 'Papel', 'Tesoura', 'Lula', 'Bolsonaro', 'Xandão','Moro']
-let userChoice
-let computerChoice
+      const choices = ['Pedra', 'Papel', 'Tesoura', 'Lula', 'Bolsonaro', 'Xandão', 'Moro']
+      let userChoice
+      let computerChoice
 
-const handleClick = (e) => {
-  userChoice = e.target.id
-  userChoiceDisplay.innerHTML = 'User choice: ' + userChoice
-  generateComputerChoice()
-  getResult()
-}
+      const handleClick = (e) => {
+        userChoice = e.target.id
+        userChoiceDisplay.innerHTML = 'Sua Escolha: ' + userChoice
+        generateComputerChoice()
+        getResult()
+      }
 
-const generateComputerChoice = () => {
-  const randomChoice = choices[Math.floor(Math.random() * choices.length)]
-  computerChoice = randomChoice
-  computerChoiceDisplay.innerHTML = 'Computer choice: ' + computerChoice
-}
+      const generateComputerChoice = () => {
+        const randomChoice = choices[Math.floor(Math.random() * choices.length)]
+        computerChoice = randomChoice
+        computerChoiceDisplay.innerHTML = 'Escolha do Computador:  ' + computerChoice
+      }
 
-for (let i = 0; i < choices.length; i++) {
-  const button = document.createElement('button')
-  button.id = choices[i] // you can delete this id you want to use e.target.HTML in the handleClick
-  button.innerHTML = choices[i]
-  button.addEventListener('click', handleClick)
-  gameGrid.appendChild(button)
-}
-
-const getResult = () => {
+      for (let i = 0; i < choices.length; i++) {
+        const button = document.createElement('button')
+        button.id = choices[i] // you can delete this id you want to use e.target.HTML in the handleClick
+        button.innerHTML = choices[i]
+        button.addEventListener('click', handleClick)
+        gameGrid.appendChild(button)
+      }
+      const getResult = () => {
   switch (userChoice + computerChoice) {
     case 'TesouraPapel':
     case 'PedraTesoura':
@@ -161,13 +208,14 @@ const getResult = () => {
       break
       
       
-    
-    
+       
+  }
 }
 
-}
+
 
 
     </script>
   </body>
 </html>
+
